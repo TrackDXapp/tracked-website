@@ -487,6 +487,31 @@ a { color: inherit; }
   font-size: 0.92rem;
 }
 
+.philosophy-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  max-width: 68ch;
+  display: grid;
+  gap: 16px;
+}
+
+.philosophy-list li {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  color: #5b463c;
+  font-size: 0.98rem;
+}
+
+.philosophy-list li strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
