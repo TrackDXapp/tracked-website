@@ -479,6 +479,39 @@ a { color: inherit; }
   margin: 0 0 18px;
 }
 
+/* How-to-use grid (Support page) */
+
+.howto-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin: 28px 0 0;
+  align-items: start;
+}
+
+.howto-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.howto-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.howto-card img {
+  border-radius: 12px;
+}
+
 .company-block {
   max-width: 620px;
   margin: 0 auto;
@@ -573,6 +606,7 @@ a { color: inherit; }
   .hero-art { order: -1; min-height: 340px; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .screens-grid { grid-template-columns: repeat(2, 1fr); }
+  .howto-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 720px) {
@@ -602,6 +636,7 @@ a { color: inherit; }
 @media (max-width: 560px) {
   .feature-grid { grid-template-columns: 1fr; }
   .screens-grid { grid-template-columns: 1fr; }
+  .howto-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; }
   .band { padding: 32px 0; }
   .phone-shot { width: 190px; }
