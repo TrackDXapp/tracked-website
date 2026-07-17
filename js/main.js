@@ -25,4 +25,40 @@ document.addEventListener('DOMContentLoaded', function () {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  // Generic "copy to clipboard" buttons: <button data-copy-target="someId">
+  document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
+    var targetEl = document.getElementById(btn.getAttribute('data-copy-target'));
+    if (!targetEl) return;
+    var defaultLabel = btn.textContent;
+    btn.addEventListener('click', function () {
+      var text = targetEl.textContent;
+      var done = function () {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = defaultLabel;
+          btn.classList.remove('copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  });
+
+  function fallbackCopy(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* no-op */ }
+    document.body.removeChild(ta);
+  }
 });

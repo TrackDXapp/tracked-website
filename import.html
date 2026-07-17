@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09Z6HNYB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z09Z6HNYB4');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Import Your Data — TrackDX</title>
+<meta name="description" content="Moving from another symptom tracker or a paper diary? Download the TrackDX Import Assistant and use Claude to convert your data into TrackDX's format in minutes.">
+
+<link rel="icon" type="image/png" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/app-icon-180.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html#top">
+      <img src="assets/img/app-icon-180.png" alt="TrackDX app icon" class="brand-icon">
+      <span class="brand-name">TrackDX</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#screens">Interface</a>
+      <a href="index.html#privacy">Privacy</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="index.html#download" class="nav-cta">Get the app</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="section-title">Import your data</h1>
+      <p class="section-lead" style="margin:0 auto;">Coming from another app, a spreadsheet, or a paper diary?
+      Here's the fastest way to bring your history into TrackDX.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container" style="max-width:760px;">
+      <p class="section-lead">
+        TrackDX can import a spreadsheet of your history, but it needs the data laid out in a specific way —
+        one row per day, organized by condition. Reformatting old records by hand is tedious, so instead we
+        give you a template and a ready-made prompt for Claude, the AI assistant, to do the reformatting for
+        you in a couple of minutes.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="band band-cream">
+    <div class="container">
+      <h2 class="section-title" style="text-align:center;">How it works</h2>
+      <ol class="steps-list">
+        <li><strong>Download the TrackDX Import Assistant.</strong> It's a workbook with an example, a format
+        guide, and a ready-to-use prompt — grab it below.</li>
+        <li><strong>Gather your existing data.</strong> Export a CSV from your old app, or just use whatever
+        spreadsheet, notes, or paper diary you already have.</li>
+        <li><strong>Open a new chat at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</strong>
+        Any recent Claude model works well for this.</li>
+        <li><strong>Attach both files</strong> — your existing data and the Import Assistant workbook — then
+        copy and paste the prompt below into the chat.</li>
+        <li><strong>Download the file Claude gives you back.</strong> It'll already be laid out in TrackDX's
+        format. Skim Claude's summary of any judgment calls it made.</li>
+        <li><strong>In TrackDX, go to Me → Import history from .XLSX</strong> and choose that file.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="band">
+    <div class="container">
+      <div class="download-card">
+        <h2>TrackDX Import Assistant</h2>
+        <p>The template, format guide, and Claude prompt, all in one workbook.</p>
+        <a class="btn btn-primary" href="assets/files/TrackDX-Import-Assistant.xlsx" download="TrackDX Import Assistant.xlsx">Download the workbook</a>
+        <div class="file-chip">TrackDX Import Assistant.xlsx</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMPT -->
+  <section class="band band-cream">
+    <div class="container">
+      <div class="prompt-wrap">
+        <div class="prompt-header">
+          <span>Prompt for Claude</span>
+          <button class="copy-btn" data-copy-target="claudePrompt" type="button">Copy prompt</button>
+        </div>
+        <pre class="prompt-box" id="claudePrompt">I'm moving my personal health-tracking data into an app called TrackDX. I've attached two files:
+
+1. My existing data — my history from another app, a CSV export, or notes I've typed up describing my symptom episodes, triggers, and medications.
+2. "TrackDX Import Assistant.xlsx" — a workbook with a "Format Guide" tab (explains every column), an "Example" tab (a fully filled-in sample), a "Blank Template" tab, and a "Med Periods Template" tab.
+
+Please read the Format Guide and Example tabs carefully, then convert my existing data into that exact layout. Specifically:
+
+- Create ONE sheet per medical condition I'm tracking, named with the condition's name (max 15 characters, since that's Excel's tab-name rule TrackDX follows).
+- Each sheet needs ONE ROW PER CALENDAR DAY, starting from the earliest date in my data through today — including days with nothing logged (leave those columns blank, but still include the row with the date and 0s where appropriate). This matters for TrackDX's statistics.
+- Follow the exact column headers and order shown in the Example tab: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, then a repeating group of 7 columns per episode that happened that day (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause — then Episode 2 …, Episode 3 …, etc. if more than one episode ever happens on the same day).
+- Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
+- "Episode Occurred" is 1 if any episode happened that day, else 0. "Episode Count" is how many episodes that day.
+- "Episode X Relief Helped" must be exactly "Yes", "Somewhat", or "No".
+- If you're not sure which existing field maps to "Suspected Cause" vs. a logged "Trigger", make a reasonable judgment call and note it in your reply so I can double check.
+- If my old data includes when I started or stopped taking any preventative medication, put that in a separate "Med Periods" sheet with columns Condition, Medication, Start, End (blank End = still taking it), following the Med Periods Template tab. Don't try to cram medication history into the daily columns.
+- Intensity should be on a 1-10 scale — if my old data uses a different scale (like 1-5), convert it proportionally and tell me what conversion you used.
+
+When you're done, give me the finished file as a downloadable .xlsx, and briefly summarize any assumptions or judgment calls you made so I can review them before I import it.</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPORTANT NOTE -->
+  <section class="band">
+    <div class="container">
+      <div class="disclaimer-box">
+        <h2>Before you import</h2>
+        <p>
+          Importing replaces the history of any condition that matches an existing one in TrackDX. If you
+          already have data logged in the app, export a backup first (Me → Export history as .XLSX), and
+          skim through the file Claude gives you before importing it. TrackDX is a personal tracking tool,
+          not a medical device — the accuracy of your imported history is worth a quick double-check.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-cream">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Still stuck?</h2>
+        <p>If the import doesn't go smoothly, we're happy to help.</p>
+        <a class="btn btn-primary" href="mailto:support@trackdx.net">support@trackdx.net</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/img/app-icon-180.png" alt="TrackDX app icon" class="footer-icon">
+      <span>TrackDX</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#privacy">Privacy</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <p class="footer-legal">
+      TrackDX™ — © 2026 TrackDX, LLC. All rights reserved.<br>
+      TrackDX is a personal tracking tool, not a medical device, and is not intended to diagnose, treat,
+      cure, or prevent any disease.
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
