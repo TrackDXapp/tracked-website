@@ -342,6 +342,25 @@ a { color: inherit; }
   gap: 48px;
 }
 
+/* Medication spotlight */
+
+.spotlight-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.spotlight-art {
+  display: flex;
+  justify-content: center;
+}
+
+.spotlight-art .phone-shot {
+  width: 260px;
+  box-shadow: 0 24px 50px rgba(62, 44, 36, 0.22);
+}
+
 /* Screens grid */
 
 .screens-grid {
@@ -726,10 +745,12 @@ a { color: inherit; }
 
 @media (max-width: 900px) {
   .hero-inner,
-  .two-col {
+  .two-col,
+  .spotlight-inner {
     grid-template-columns: 1fr;
   }
   .hero-art { order: -1; min-height: 340px; }
+  .spotlight-art { order: -1; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .screens-grid { grid-template-columns: repeat(2, 1fr); }
   .howto-grid { grid-template-columns: repeat(2, 1fr); }
