@@ -34,7 +34,7 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="index.html#features">Features</a>
       <a href="index.html#screens">Interface</a>
-      <a href="index.html#privacy">Privacy</a>
+      <a href="privacy.html">Privacy</a>
       <a href="about.html">About</a>
       <a href="support.html">Support</a>
       <a href="index.html#download" class="nav-cta">Get the app</a>
@@ -110,9 +110,10 @@ Please read the Format Guide and Example tabs carefully, then convert my existin
 
 - Create ONE sheet per medical condition I'm tracking, named with the condition's name (max 15 characters, since that's Excel's tab-name rule TrackDX follows).
 - Each sheet needs ONE ROW PER CALENDAR DAY, starting from the earliest date in my data through today — including days with nothing logged (leave those columns blank, but still include the row with the date and 0s where appropriate). This matters for TrackDX's statistics.
-- Follow the exact column headers and order shown in the Example tab: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, then a repeating group of 8 columns per episode that happened that day (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause, Episode 1 Notes — then Episode 2 …, Episode 3 …, etc. if more than one episode ever happens on the same day).
+- Follow the exact column headers and order shown in the Example tab: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, Drink Type, then a repeating group of 8 columns per episode that happened that day (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause, Episode 1 Notes — then Episode 2 …, Episode 3 …, etc. if more than one episode ever happens on the same day).
 - Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
 - "Episode Occurred" is 1 if any episode happened that day, else 0. "Episode Count" is how many episodes that day.
+- "Drink Type" is the main kind of alcohol drunk that day — exactly one of "Red wine", "White wine", "Beer", or "Spirits". Leave it blank on days with no alcohol, or when my data doesn't say which kind. If my data names a specific drink (e.g. "Merlot", "IPA", "whisky"), map it to the closest of those four and tell me how you mapped it.
 - "Episode X Relief Medication" can list SEVERAL medications for one episode, separated by "; " (e.g. "Excedrin; Maxalt"). Only list medications actually taken to relieve that episode — preventative medications belong on the Med Periods sheet, not here.
 - "Episode X Relief Helped" is a score from 0 to 10 for how much the medication helped: 0 = didn't help at all, 10 = completely resolved it. If several medications are listed, give one score per medication in the SAME ORDER, separated by "; " (e.g. "4; 9" means Excedrin scored 4 and Maxalt scored 9). Leave it blank if no relief medication was taken or no effect was recorded. Convert whatever my data uses: a percentage divides by 10 (80% → 8, 45% → 4.5 rounded to 5); the words "Yes"/"Somewhat"/"No" become 10/8/0; a 1–5 scale multiplies by 2. Tell me which conversion you used.
 - "Episode X Notes" is optional free text — any comment I recorded about that specific episode (how it felt, what I was doing, anything unusual). If my old data has a notes, comments, or description field tied to an episode, put it here. Keep it short; don't invent notes where none existed.
@@ -148,7 +149,8 @@ When you're done, give me the finished file as a downloadable .xlsx, and briefly
     </div>
     <nav class="footer-nav" aria-label="Footer">
       <a href="index.html#features">Features</a>
-      <a href="index.html#privacy">Privacy</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="about.html">About</a>
       <a href="support.html">Support</a>
     </nav>

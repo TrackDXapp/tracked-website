@@ -515,6 +515,22 @@ a { color: inherit; }
   text-decoration: underline;
 }
 
+/* ALL-CAPS legal blocks in the Terms (warranty disclaimer, medical notice).
+   Capitalisation is what makes these enforceable in many jurisdictions, so the
+   text can't be lowercased — instead it's set smaller, tighter and offset so a
+   wall of capitals reads as legal emphasis rather than as shouting. */
+
+.policy-content p.policy-caps {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #6b4a3a;
+  background: var(--peach);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 0 0 14px;
+}
+
 .policy-note {
   background: var(--peach);
   border-radius: var(--radius);
