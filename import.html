@@ -64,10 +64,18 @@
         give you a template and a ready-made prompt for Claude, the AI assistant, to do the reformatting for
         you in a couple of minutes.
       </p>
+      <p class="section-lead">
+        This works for both kinds of condition TrackDX tracks: <strong>episodic</strong> ones that come and
+        go in discrete attacks, like migraine or seizures, and <strong>daily</strong> ones that are present
+        most days and you rate by body location, like sciatica or arthritis. You don't have to work out which
+        is which — the prompt asks Claude to decide from your data and tell you what it chose. One workbook
+        can hold a mix of both.
+      </p>
       <h2 class="section-title" style="text-align:center;">How it works</h2>
       <ol class="steps-list">
-        <li><strong>Download the TrackDX Import Assistant.</strong> It's a workbook with an example, a format
-        guide, and a ready-to-use prompt — grab it below.</li>
+        <li><strong>Download the TrackDX Import Assistant.</strong> It's a workbook with worked examples and
+        blank templates for both kinds of condition, a format guide, and a ready-to-use prompt — grab it
+        below.</li>
         <li><strong>Gather your existing data.</strong> Export a CSV from your old app, or just use whatever
         spreadsheet, notes, or paper diary you already have.</li>
         <li><strong>Open a new chat at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</strong>
@@ -86,7 +94,8 @@
     <div class="container">
       <div class="download-card">
         <h2>TrackDX Import Assistant</h2>
-        <p>The template, format guide, and Claude prompt, all in one workbook.</p>
+        <p>Templates, format guide, and Claude prompt, all in one workbook — covering episodic
+        and daily conditions, procedures, and medication history.</p>
         <a class="btn btn-primary" href="assets/files/TrackDX-Import-Assistant.xlsx" download="TrackDX Import Assistant.xlsx">Download the workbook</a>
         <div class="file-chip">TrackDX Import Assistant.xlsx</div>
       </div>
@@ -103,28 +112,60 @@
         </div>
         <pre class="prompt-box" id="claudePrompt">I'm moving my personal health-tracking data into an app called TrackDX. I've attached two files:
 
-1. My existing data — my history from another app, a CSV export, or notes I've typed up describing my symptom episodes, triggers, and medications.
-2. "TrackDX Import Assistant.xlsx" — a workbook with a "Format Guide" tab (explains every column), an "Example" tab (a fully filled-in sample), a "Blank Template" tab, and a "Med Periods Template" tab.
+1. My existing data — my history from another app, a CSV export, or notes I've typed up describing my symptoms, triggers, and medications.
+2. "TrackDX Import Assistant.xlsx" — a workbook with a "Format Guide" tab (explains every column), worked examples, blank templates, and templates for the extra sheets.
 
-Please read the Format Guide and Example tabs carefully, then convert my existing data into that exact layout. Specifically:
+FIRST, decide how each of my conditions is tracked. TrackDX supports two kinds, and they use DIFFERENT column layouts:
 
-- Create ONE sheet per medical condition I'm tracking, named with the condition's name (max 15 characters, since that's Excel's tab-name rule TrackDX follows).
-- Each sheet needs ONE ROW PER CALENDAR DAY, starting from the earliest date in my data through today — including days with nothing logged (leave those columns blank, but still include the row with the date and 0s where appropriate). This matters for TrackDX's statistics.
-- Follow the exact column headers and order shown in the Example tab: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, Drink Type, then a repeating group of 8 columns per episode that happened that day (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause, Episode 1 Notes — then Episode 2 …, Episode 3 …, etc. if more than one episode ever happens on the same day).
+- EPISODIC — the condition comes and goes in discrete attacks. Migraine, seizures, cluster headaches, gout flares. My data will show individual events with a start time, or a "did it happen today?" flag, and long stretches with nothing.
+- DAILY — the condition is present most days and I rate how bad it is. Sciatica, arthritis, neuropathy, fibromyalgia, chronic back pain. My data will show a severity number on most days, often broken down by body location.
+
+Rule of thumb: if my data has a pain or severity score on most days, it's DAILY. If it records separate attacks with gaps between them, it's EPISODIC. Tell me which you chose for each condition and why. If I have both kinds, put each condition on its own sheet in the correct layout — one workbook can hold a mix.
+
+Then convert my data. For BOTH kinds:
+
+- Create ONE sheet per condition, named with the condition's name (max 15 characters — that's Excel's tab-name rule TrackDX follows).
+- ONE ROW PER CALENDAR DAY, from the earliest date in my data through today, INCLUDING days with nothing logged. The empty days are real information to TrackDX's statistics, so don't skip them.
 - Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
-- "Episode Occurred" is 1 if any episode happened that day, else 0. "Episode Count" is how many episodes that day.
-- "Drink Type" is the main kind of alcohol drunk that day — exactly one of "Red wine", "White wine", "Beer", or "Spirits". Leave it blank on days with no alcohol, or when my data doesn't say which kind. If my data names a specific drink (e.g. "Merlot", "IPA", "whisky"), map it to the closest of those four and tell me how you mapped it.
-- "Episode X Relief Medication" can list SEVERAL medications for one episode, separated by "; " (e.g. "Excedrin; Maxalt"). Only list medications actually taken to relieve that episode — preventative medications belong on the Med Periods sheet, not here.
-- "Episode X Relief Helped" is a score from 0 to 10 for how much the medication helped: 0 = didn't help at all, 10 = completely resolved it. If several medications are listed, give one score per medication in the SAME ORDER, separated by "; " (e.g. "4; 9" means Excedrin scored 4 and Maxalt scored 9). Leave it blank if no relief medication was taken or no effect was recorded. Convert whatever my data uses: a percentage divides by 10 (80% → 8, 45% → 4.5 rounded to 5); the words "Yes"/"Somewhat"/"No" become 10/8/0; a 1–5 scale multiplies by 2. Tell me which conversion you used.
-- "Episode X Notes" is optional free text — any comment I recorded about that specific episode (how it felt, what I was doing, anything unusual). If my old data has a notes, comments, or description field tied to an episode, put it here. Keep it short; don't invent notes where none existed.
-- If you're not sure which existing field maps to "Suspected Cause" vs. a logged "Trigger", make a reasonable judgment call and note it in your reply so I can double check.
-- If my old data includes when I started or stopped taking any preventative medication, put that in a separate "Med Periods" sheet with columns Condition, Medication, Start, End (blank End = still taking it), following the Med Periods Template tab. Don't try to cram medication history into the daily columns.
-- Intensity should be on a 1-10 scale — if my old data uses a different scale (like 1-5), convert it proportionally and tell me what conversion you used.
-- A row with an intensity of 0 and no episode is NOT an episode. Many trackers record 0 (or blank) pain on symptom-free days — for those days leave the episode columns blank and set "Episode Occurred" to 0. Only create an episode where my data actually records one (e.g. "Flare today? = Yes"). Such a day can still be a trigger day, so keep its Triggers Logged and Drinks values.
-- Drop any columns from my old data that TrackDX doesn't use. Don't add extra columns of your own, and don't keep unmapped fields "just in case" — anything outside the layout above will be ignored on import.
-- Delete the example rows from the template before you hand the file back, and rename each sheet to the condition it holds.
+- Don't add columns of your own, and don't keep unmapped fields "just in case" — anything outside the layouts below is ignored on import.
+- Delete the template's example rows before handing the file back.
 
-When you're done, give me the finished file as a downloadable .xlsx, and briefly summarize any assumptions or judgment calls you made so I can review them before I import it.</pre>
+=== EPISODIC LAYOUT ===
+Columns, in this order: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, Drink Type, then a repeating group of 8 columns per episode (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause, Episode 1 Notes — then Episode 2 …, Episode 3 …, if more than one episode ever happens on the same day).
+
+- "Episode Occurred" is 1 if any episode happened that day, else 0. "Episode Count" is how many.
+- "Episode X Relief Medication" can list SEVERAL medications separated by "; " (e.g. "Excedrin; Maxalt"). Only medications taken to relieve that episode — preventatives go on the Med Periods sheet.
+- "Episode X Relief Helped" is 0–10 for how much it helped: 0 = not at all, 10 = completely resolved. One score per medication in the SAME ORDER, separated by "; " (e.g. "4; 9"). Convert whatever my data uses: a percentage divides by 10 (80% → 8); "Yes"/"Somewhat"/"No" become 10/8/0; a 1–5 scale multiplies by 2. Tell me which conversion you used.
+- "Episode X Intensity (1-10)" is 1–10; convert other scales proportionally and say how.
+- "Episode X Notes" is optional free text about that specific episode. Keep it short; don't invent notes.
+- A row with intensity 0 and no episode is NOT an episode. Many trackers record 0 or blank on symptom-free days — leave the episode columns blank and set "Episode Occurred" to 0. Such a day can still be a trigger day, so keep its Triggers Logged and Drinks values.
+
+=== DAILY LAYOUT ===
+Columns, in this order: Date, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, Drink Type, then one "Severity: &lt;location&gt;" column per body location I track, then Notes.
+
+- The "Severity: " columns are what tell TrackDX this is a daily condition, so the spelling matters exactly — "Severity: Lower back", "Severity: Left calf". There is no "Episode Occurred" or "Episode …" column on a daily sheet at all.
+- MAXIMUM 6 locations. If my data has more, pick the 6 most frequently recorded and tell me which you dropped.
+- If my data records only one overall score with no body locations, use a single column named "Severity: Overall".
+- Severity values are 0 to 10, in steps of 0.5. Convert other scales proportionally and tell me how.
+- CRITICAL — blank and 0 mean different things and must not be swapped. A BLANK cell means "not recorded that day". A 0 means "I recorded it, and there was nothing there". Never fill a missing day with 0, and never blank out a genuine recorded 0. If my source can't distinguish them, leave it blank and tell me.
+- "Notes" is optional free text for that day.
+
+=== EXTRA SHEETS (add these when the data supports them) ===
+
+"Conditions" — one row per condition. Columns: Condition, Tracking Mode, Sites.
+- "Tracking Mode" is the word "Daily" or "Episodes".
+- "Sites" is the full list of body locations for a daily condition, separated by "; " — in the order I'd want them shown. Include locations even if they were rarely recorded, so none get lost. Leave blank for episodic conditions.
+- Include this sheet whenever any condition is daily.
+
+"Procedures" — surgeries, injections, blocks, ablations. Columns: Condition, Procedure, Date, Site, Notes, Recalled Overall, Recalled By Site.
+- One row per procedure. "Site" is the body location it targeted, if any.
+- "Recalled Overall" and "Recalled By Site" are ONLY for a procedure that happened BEFORE my logging starts, where I've told you my remembered severity beforehand. "Recalled By Site" format is "Location=Value; Location=Value" (e.g. "Lower back=7; Left calf=5").
+- Do NOT estimate or invent these. Leave them blank unless I explicitly gave you remembered numbers — TrackDX labels anything derived from them as recalled rather than recorded, and a made-up baseline would silently distort how well a procedure appears to have worked.
+
+"Med Periods" — which preventative medications I was on, and when. Columns: Condition, Medication, Start, End (blank End = still taking it).
+- Preventative medication history goes here, never in the daily columns.
+
+When you're done, give me the finished file as a downloadable .xlsx, and summarize the tracking mode you chose per condition, any scale conversions, and any judgment calls — so I can review before importing.</pre>
       </div>
     </div>
   </section>
