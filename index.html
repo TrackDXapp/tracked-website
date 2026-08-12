@@ -14,12 +14,12 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrackDX — Track Any Condition, Understand Your Patterns</title>
-<meta name="description" content="TrackDX is the symptom, trigger, and medication tracker for any medical condition — not just one. Log episodes, triggers, and medications, then get statistics-driven insights you and your doctor can actually use.">
+<title>TrackDX — Track Multiple Conditions, Understand Your Patterns</title>
+<meta name="description" content="TrackDX is the symptom, trigger, and medication tracker for multiple medical conditions — not just one. Track conditions that come in episodes or that you rate daily, then get statistics-driven insights you and your doctor can actually use.">
 
 <!-- Open Graph -->
-<meta property="og:title" content="TrackDX — Track any condition. Understand your patterns.">
-<meta property="og:description" content="Log episodes, triggers, preventative meds, and relief meds for any condition. Get insights that help guide management with your doctor.">
+<meta property="og:title" content="TrackDX — Track multiple conditions. Understand your patterns.">
+<meta property="og:description" content="Log episodes, triggers, preventative meds, and relief meds across multiple conditions — episodic or daily. Get insights that help guide management with your doctor.">
 <meta property="og:image" content="assets/img/app-icon-512.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.trackdx.net">
@@ -58,12 +58,12 @@
   <section id="top" class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">For any condition. For every pattern that matters.</p>
+        <p class="eyebrow">For multiple conditions. For every pattern that matters.</p>
         <h1>Your condition doesn't fit in a box. Your tracker shouldn't either.</h1>
         <p class="hero-sub">
-          TrackDX is the symptom tracker built to handle whatever you're living with — migraines, sciatica,
-          IBS, eczema, food allergies, or something entirely your own. Log episodes, triggers, and
-          medications in seconds, and let TrackDX find the patterns you'd never spot on your own.
+          TrackDX is the symptom tracker built for conditions that come and go in attacks — and for the ones
+          you live with every day. Migraines, sciatica, IBS, eczema, food allergies, and more. Log episodes,
+          triggers, and medications in seconds, and let TrackDX find the patterns you'd never spot on your own.
         </p>
         <div class="hero-actions">
           <a href="#download" class="btn btn-primary">Get the app</a>
@@ -76,7 +76,7 @@
       </div>
       <div class="hero-art">
         <img src="assets/img/screenshot-episode.png" alt="TrackDX New Episode screen showing intensity and relief medication" class="phone-shot phone-shot--back">
-        <img src="assets/img/screenshot-insights.png" alt="TrackDX Insights screen showing episodes per week and top triggers" class="phone-shot phone-shot--front">
+        <img src="assets/img/screenshot-insights-trends.png" alt="TrackDX Insights screen showing episodes per period with a moving trend line, and which triggers predict episodes" class="phone-shot phone-shot--front">
       </div>
     </div>
   </section>
@@ -84,7 +84,7 @@
   <!-- WHAT MAKES IT DIFFERENT -->
   <section class="band band-cream">
     <div class="container">
-      <h2 class="section-title">Built for any condition — not just one</h2>
+      <h2 class="section-title">Built for multiple conditions — not just one</h2>
       <p class="section-lead">
         Most tracking apps pick a single condition and stop there. TrackDX allows you to track as many
         medical conditions as you need, each with its own triggers and medications, all in one place.
@@ -100,7 +100,51 @@
         <span class="pill">Epilepsy</span>
         <span class="pill">Fibromyalgia</span>
         <span class="pill">Food Allergy</span>
-        <span class="pill pill-accent">+ anything you name</span>
+        <span class="pill pill-accent">+ many more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO TRACKING MODES -->
+  <section id="modes" class="band band-peach">
+    <div class="container">
+      <h2 class="section-title">Episodes or daily severity — whichever fits your condition</h2>
+      <p class="section-lead">
+        Not every condition behaves the same way, so TrackDX doesn't make them share one format. When you add
+        a condition you choose how it's tracked, and the whole app — logging, history, and insights — adapts
+        to match.
+      </p>
+      <div class="two-col" style="margin-top:26px;">
+        <div>
+          <h3 style="margin-bottom:8px;">Episodes</h3>
+          <p class="section-lead">
+            For conditions that come and go in discrete attacks — migraine, IBS flares, asthma attacks,
+            seizures. Log when it started, how long it lasted, how intense it was, what you took, and whether
+            it helped. Quiet days are recorded too, because gaps are data.
+          </p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px;">Daily severity</h3>
+          <p class="section-lead">
+            For conditions that are present most days and vary in degree — sciatica, fibromyalgia, eczema,
+            TMJ. Rate severity once a day, broken out by up to six body locations, so you can see which spots
+            are improving and which aren't.
+          </p>
+        </div>
+      </div>
+      <p class="section-lead" style="margin-top:22px;">
+        Not sure which to pick? TrackDX suggests one for each condition it knows and explains why — but the
+        choice is always yours, and you can change it later.
+      </p>
+      <div style="display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin-top:30px;">
+        <figure class="screen-item" style="max-width:290px; margin:0;">
+          <img src="assets/img/screenshot-daily.png" alt="TrackDX daily severity screen with a 0-10 slider for each tracked body location">
+          <figcaption>Rate each location once a day</figcaption>
+        </figure>
+        <figure class="screen-item" style="max-width:290px; margin:0;">
+          <img src="assets/img/screenshot-daily-insights.png" alt="TrackDX daily Insights showing average severity, the change over the last 7 days, the worst body location, and a severity trend chart marked with procedure dates">
+          <figcaption>See whether it's actually improving</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -115,9 +159,10 @@
       <div class="feature-grid">
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">⚡</div>
-          <h3>Episodes</h3>
+          <h3>Episodes or daily severity</h3>
           <p>Log the date, start time, duration, intensity (1–10), the relief medication you used, whether
-          it helped, and your suspected cause — in well under a minute.</p>
+          it helped, and your suspected cause — in well under a minute. Tracking a daily condition instead?
+          Rate severity by body location once a day.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">✚</div>
