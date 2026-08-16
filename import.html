@@ -126,6 +126,7 @@ Then convert my data. For BOTH kinds:
 
 - Create ONE sheet per condition, named with the condition's name (max 15 characters — that's Excel's tab-name rule TrackDX follows).
 - ONE ROW PER CALENDAR DAY, from the earliest date in my data through today, INCLUDING days with nothing logged. The empty days are real information to TrackDX's statistics, so don't skip them.
+- PUT THE COLUMN HEADERS IN THE VERY FIRST ROW of each sheet. No title, caption or blank row above them — TrackDX reads row 1 as the header and stops, so anything above it makes the whole sheet import as empty.
 - Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
 - Don't add columns of your own, and don't keep unmapped fields "just in case" — anything outside the layouts below is ignored on import.
 - Delete the template's example rows before handing the file back.
