@@ -441,6 +441,24 @@ a { color: inherit; }
   cursor: default;
 }
 
+/* Official store badge artwork (Google's own asset, unmodified per their terms).
+   Height is matched to the neighbouring text badge so the two sit level. */
+.store-badge-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.store-badge-link:hover,
+.store-badge-link:focus-visible { transform: translateY(-2px); }
+
+.store-badge-art {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
 /* Live badge: a real link, so it needs affordance the disabled ones don't have. */
 .store-badge--live {
   background: rgba(0, 0, 0, 0.32);
@@ -585,6 +603,40 @@ a { color: inherit; }
   color: #5b463c;
   margin: 0 0 18px;
 }
+
+/* About page.
+   Everything sits in ONE column of the same width and is centred. Previously
+   the pieces disagreed: .section-lead and .philosophy-list were capped at 68ch
+   (~730px) with no auto margins, while .contact-card was 620px and centred — so
+   three different left edges down a single page. That mismatch, not the text
+   alignment, is what made it look broken. --about-col forces one measure. */
+.page-about {
+  --about-col: 660px;
+}
+
+.page-about .section-title,
+.page-about .section-lead,
+.page-about .philosophy-list,
+.page-about .philosophy-list li,
+.page-about .company-block {
+  text-align: center;
+}
+
+.page-about .section-lead,
+.page-about .philosophy-list,
+.page-about .contact-card,
+.page-about .company-block {
+  max-width: var(--about-col);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Breathing room between the stacked bands — 44px top and bottom ran the
+   philosophy cards straight into the contact card. */
+.page-about .page-hero { padding: 52px 0 4px; }
+.page-about .section-lead { margin-bottom: 8px; }
+.page-about .philosophy-list { margin-top: 24px; }
+.page-about .company-block { color: #7a6559; font-size: 0.95rem; }
 
 /* How-to-use grid (Support page) */
 
