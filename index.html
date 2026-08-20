@@ -320,11 +320,21 @@
         subscription, ever. The iPhone version is with Apple for review and will be here shortly.
       </p>
       <div class="store-badges">
-        <a class="store-badge store-badge--live"
+        <!-- Official Google Play badge. The text block below is a fallback: the
+             CSS hides it whenever the image loads, and the img's onerror removes
+             the image if the asset is missing, which re-reveals the text. So the
+             page never shows a broken-image icon. -->
+        <a class="store-badge-link"
            href="https://play.google.com/store/apps/details?id=net.trackdx.app"
            rel="noopener">
-          <span class="store-badge-eyebrow">Get it on</span>
-          <span class="store-badge-name">Google Play</span>
+          <img class="store-badge-art"
+               src="assets/img/google-play-badge.png"
+               alt="Get it on Google Play"
+               onerror="this.remove()">
+          <span class="store-badge store-badge--live store-badge-fallback">
+            <span class="store-badge-eyebrow">Get it on</span>
+            <span class="store-badge-name">Google Play</span>
+          </span>
         </a>
         <span class="store-badge store-badge--disabled" aria-disabled="true">
           <span class="store-badge-eyebrow">Coming soon to the</span>
