@@ -441,6 +441,23 @@ a { color: inherit; }
   cursor: default;
 }
 
+/* Live badge: a real link, so it needs affordance the disabled ones don't have. */
+.store-badge--live {
+  background: rgba(0, 0, 0, 0.32);
+  border-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.store-badge--live:hover,
+.store-badge--live:focus-visible {
+  background: rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.store-badge--disabled { opacity: 0.55; }
+
 .store-badge-eyebrow {
   font-size: 0.7rem;
   text-transform: uppercase;
