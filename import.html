@@ -15,7 +15,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Import Your Data — TrackDX</title>
-<meta name="description" content="Moving from another symptom tracker or a paper diary? Download the TrackDX Import Assistant and use Claude to convert your data into TrackDX's format in minutes.">
+<meta name="description" content="Moving from another symptom tracker or a paper diary? Convert your history with an AI assistant and import it into TrackDX — right in the app, or from your computer.">
 
 <link rel="icon" type="image/png" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/app-icon-180.png">
@@ -52,40 +52,40 @@
     <div class="container">
       <h1 class="section-title">Import your data</h1>
       <p class="section-lead" style="margin:0 auto;">Coming from another app, a spreadsheet, or a paper diary?
-      Here's the fastest way to bring your history into TrackDX.</p>
+      Bring your history into TrackDX in a few minutes.</p>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- EASIEST: IN THE APP (v2.0) -->
   <section class="band band-cream">
     <div class="container" style="max-width:760px;">
+      <div class="contact-card">
+        <h2>Easiest: do it in the app</h2>
+        <p>In TrackDX, go to <strong>Me → Import from another tracker</strong>. It gives you the template and
+        the AI prompt, then checks the converted file and shows you exactly what will import before anything
+        is saved. Requires TrackDX 2.0 or later.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ON A COMPUTER -->
+  <section class="band">
+    <div class="container" style="max-width:760px;">
+      <h2 class="section-title" style="text-align:center;">Prefer to use a computer?</h2>
       <p class="section-lead">
-        TrackDX can import a spreadsheet of your history, but it needs the data laid out in a specific way —
-        one row per day, organized by condition. Reformatting old records by hand is tedious, so instead we
-        give you a template and a ready-made prompt for Claude, the AI assistant, to do the reformatting for
-        you in a couple of minutes.
+        Converting is often easier on a laptop. You'll use an AI assistant such as Claude, ChatGPT or Gemini to
+        reformat your old records into TrackDX's layout. It works for conditions that come and go in episodes,
+        like migraine, and for ones you rate every day, like sciatica.
       </p>
-      <p class="section-lead">
-        This works for both kinds of condition TrackDX tracks: <strong>episodic</strong> ones that come and
-        go in discrete attacks, like migraine or seizures, and <strong>daily</strong> ones that are present
-        most days and you rate by body location, like sciatica or arthritis. You don't have to work out which
-        is which — the prompt asks Claude to decide from your data and tell you what it chose. One workbook
-        can hold a mix of both.
-      </p>
-      <h2 class="section-title" style="text-align:center;">How it works</h2>
       <ol class="steps-list">
-        <li><strong>Download the TrackDX Import Assistant.</strong> It's a workbook with worked examples and
-        blank templates for both kinds of condition, a format guide, and a ready-to-use prompt — grab it
-        below.</li>
-        <li><strong>Gather your existing data.</strong> Export a CSV from your old app, or just use whatever
-        spreadsheet, notes, or paper diary you already have.</li>
-        <li><strong>Open a new chat at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>.</strong>
-        Any recent Claude model works well for this.</li>
-        <li><strong>Attach both files</strong> — your existing data and the Import Assistant workbook — then
-        copy and paste the prompt below into the chat.</li>
-        <li><strong>Download the file Claude gives you back.</strong> It'll already be laid out in TrackDX's
-        format. Skim Claude's summary of any judgment calls it made.</li>
-        <li><strong>In TrackDX, go to Me → Import history from .XLSX</strong> and choose that file.</li>
+        <li><strong>Download the TrackDX Import Assistant</strong>
+        Get the workbook below. Attaching it to the chat is strongly recommended — it shows the AI the exact
+        layout TrackDX reads.</li>
+        <li><strong>Start a new AI chat</strong>
+        Attach the workbook and your old data, then paste in the prompt below.</li>
+        <li><strong>Import the file the AI sends back</strong>
+        Save it to your phone, then in TrackDX go to Me → Import from another tracker → Import the converted
+        file.</li>
       </ol>
     </div>
   </section>
@@ -108,7 +108,7 @@
     <div class="container">
       <div class="prompt-wrap">
         <div class="prompt-header">
-          <span>Prompt for Claude</span>
+          <span>Prompt for your AI assistant</span>
           <button class="copy-btn" data-copy-target="claudePrompt" type="button">Copy prompt</button>
         </div>
         <pre class="prompt-box" id="claudePrompt">I'm moving my personal health-tracking data into an app called TrackDX. I've attached two files:
@@ -131,6 +131,7 @@ Then convert my data. For BOTH kinds:
 - Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
 - Don't add columns of your own, and don't keep unmapped fields "just in case" — anything outside the layouts below is ignored on import.
 - Delete the template's example rows before handing the file back.
+- "Drinks" is the NUMBER of alcoholic drinks that day. "Drink Type" is the main drink, and it must be exactly one of these four words: Red wine, White wine, Beer, Spirits. Map whatever my data says onto one of them — vodka, whisky, gin, tequila, rum, a margarita or any other cocktail are all "Spirits"; lager, ale, IPA, stout and cider are all "Beer"; rosé, prosecco and champagne are "White wine"; name a grape and use its colour (merlot → Red wine, chardonnay → White wine). If a drink genuinely doesn't fit — sake, mead, hard seltzer, port, sherry — leave Drink Type BLANK and keep the count. Never invent a fifth value: TrackDX ignores anything outside the four, so a row saying "Margarita" imports with the count but no type and silently drops out of the drink-type breakdown. Tell me how you mapped my drinks.
 
 === EPISODIC LAYOUT ===
 Columns, in this order: Date, Episode Occurred, Episode Count, Triggers Logged, Trigger Start Time, Trigger End Time, Drinks, Drink Type, then a repeating group of 8 columns per episode (Episode 1 Start Time, Episode 1 End Time, Episode 1 Duration (h), Episode 1 Intensity (1-10), Episode 1 Relief Medication, Episode 1 Relief Helped, Episode 1 Suspected Cause, Episode 1 Notes — then Episode 2 …, Episode 3 …, if more than one episode ever happens on the same day).
@@ -166,6 +167,7 @@ Columns, in this order: Date, Triggers Logged, Trigger Start Time, Trigger End T
 
 "Med Periods" — which preventative medications I was on, and when. Columns: Condition, Medication, Start, End (blank End = still taking it).
 - Preventative medication history goes here, never in the daily columns.
+- IF A DOSE CHANGED, SPLIT IT INTO SEPARATE MEDICATIONS — "Depakote 500mg" and "Depakote 1000mg" — each with its own start and end, rather than one continuous period. TrackDX compares every preventative in a single model, so separate entries let it report each dose on its own; kept as one medication, a dose that worked gets averaged with one that didn't and both look mediocre. Only split when a dose lasted a month or more; ignore brief changes that were reversed. Tell me which doses you split.
 
 When you're done, give me the finished file as a downloadable .xlsx, and summarize the tracking mode you chose per condition, any scale conversions, and any judgment calls — so I can review before importing.</pre>
       </div>
