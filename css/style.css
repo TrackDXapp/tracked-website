@@ -390,6 +390,30 @@ a { color: inherit; }
   text-align: center;
 }
 
+/* App preview video, above the four screenshots — plays muted and loops like an animated screenshot */
+.screen-video {
+  margin: 22px auto 0;
+  max-width: 320px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.screen-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.screen-video figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
 /* Privacy */
 
 .privacy-inner { max-width: 760px; }
