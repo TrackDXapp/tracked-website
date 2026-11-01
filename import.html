@@ -130,6 +130,7 @@ Then convert my data. For BOTH kinds:
 - Date format must be YYYY-MM-DD. Times must be HH:MM in 24-hour format.
 - Don't add columns of your own, and don't keep unmapped fields "just in case" — anything outside the layouts below is ignored on import.
 - Delete the template's example rows before handing the file back.
+- LIMITS: keep every condition, trigger and medication name to 30 characters or fewer, and use at most 10 different triggers per condition. If my data has more, keep the 10 I logged most often and tell me which you dropped — TrackDX keeps only the 10 most frequent anyway.
 - "Drinks" is the NUMBER of alcoholic drinks that day. "Drink Type" is the main drink, and it must be exactly one of these four words: Red wine, White wine, Beer, Spirits. Map whatever my data says onto one of them — vodka, whisky, gin, tequila, rum, a margarita or any other cocktail are all "Spirits"; lager, ale, IPA, stout and cider are all "Beer"; rosé, prosecco and champagne are "White wine"; name a grape and use its colour (merlot → Red wine, chardonnay → White wine). If a drink genuinely doesn't fit — sake, mead, hard seltzer, port, sherry — leave Drink Type BLANK and keep the count. Never invent a fifth value: TrackDX ignores anything outside the four, so a row saying "Margarita" imports with the count but no type and silently drops out of the drink-type breakdown. Tell me how you mapped my drinks.
 
 === EPISODIC LAYOUT ===
@@ -151,6 +152,7 @@ Columns, in this order: Date, Triggers Logged, Trigger Start Time, Trigger End T
 - Severity values are 0 to 10, in steps of 0.5. Convert other scales proportionally and tell me how.
 - CRITICAL — blank and 0 mean different things and must not be swapped. A BLANK cell means "not recorded that day". A 0 means "I recorded it, and there was nothing there". Never fill a missing day with 0, and never blank out a genuine recorded 0. If my source can't distinguish them, leave it blank and tell me.
 - "Notes" is optional free text for that day.
+- PHYSICAL THERAPY: if a condition is physical therapy for one body part, name it "PT - " followed by the condition, with L or R for the side — e.g. "PT - R Rotator Cuff", "PT - Low Back Pain" (a hyphen, not a colon). Always use the DAILY layout for it. Record the days I had a therapy session as a trigger named exactly "PT session" in Triggers Logged. The sheet tab may be cut to 15 characters, so always put the full name on the "Conditions" sheet.
 
 === EXTRA SHEETS (add these when the data supports them) ===
 
