@@ -1046,3 +1046,22 @@ a { color: inherit; }
 }
 .feature-grid--compact .feature-icon { margin: 0; }
 .feature-grid--compact .feature-card h3 { margin: 0; }
+
+/* Home: Physical therapy section, text beside a PT Insights screenshot */
+.pt-inner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+.pt-shot {
+  margin: 0;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.pt-shot img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) {
+  .pt-inner { grid-template-columns: 1fr; gap: 20px; }
+}
